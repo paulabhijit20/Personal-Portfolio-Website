@@ -50,7 +50,7 @@ Aspiring Web Developer
 
 * Add responsive design
 * Add project images
-* Add GitHub and LinkedIn links
+* Add GitHub 
 * Add dark mode
 * Add animations
 
