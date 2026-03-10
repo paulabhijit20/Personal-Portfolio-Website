@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijit Paul | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --accent: #e8f5e9;
+            --dark: #1a1a1a;
+            --text: #333;
+            --gray: #f9f9f9;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--accent) 0%, #fff 100%);
+            padding: 0 10%;
+            overflow: hidden;
+        }
+
+        .hero-content { flex: 1; }
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-content h1 span { color: var(--primary); }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #555;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-group { display: flex; gap: 15px; }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        /* Sections */
+        section { padding: 100px 10%; }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 5px;
+            background: var(--primary);
+        }
+
+        /* Education Timeline */
+        .timeline {
+            border-left: 3px solid var(--accent);
+            padding-left: 30px;
+            margin-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+        /* Project Card */
+        .project-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .project-tag {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-item { margin-bottom: 25px; }
+        .info-item h4 { color: var(--primary); font-size: 0.8rem; text-transform: uppercase; }
+        .info-item p { font-size: 1.1rem; font-weight: 600; }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ABHIJIT PAUL.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Software Developer</p>
+            <h1>Designing <span>Reliable</span> Software Solutions.</h1>
+            <p>I am a Computer Science undergraduate focused on system analysis, secure data handling, and building user-centric applications.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Who I Am</h2>
+        <div style="max-width: 800px;">
+            <p style="font-size: 1.1rem;">Motivated Computer Science undergraduate seeking an entry-level Software Developer role. I have a strong foundation in programming, system analysis, and software design principles. Passionate about building reliable, scalable, and user-centric software systems.</p>
+        </div>
+    </section>
+
+    <section id="education" style="background: var(--gray);">
+        <h2 class="section-title">My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>B.Tech in Computer Science & Engineering</h3>
+                <p>B. P. Poddar Institute of Management and Technology </p>
+                <p><strong>CGPA: 7.58</strong> (Up to 5th Semester) </p>
+            </div>
+            <div class="timeline-item">
+                <h3>Higher Secondary Education (XII)</h3>
+                <p>Sudarsanpur Dwarika Prasad Uchcha Vidyachakra </p>
+                <p><strong>Result: 91.80%</strong> </p>
+            </div>
+            <div class="timeline-item">
+                <h3>Secondary Education (X)</h3>
+                <p>Sudarsanpur Dwarika Prasad Uchcha Vidyachakra </p>
+                <p><strong>Result: 76.14%</strong> </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Languages</h3>
+                <p>Java, C </p>
+            </div>
+            <div class="skill-card">
+                <h3>Core Concepts</h3>
+                <p>OOP, Data Structures, DBMS </p>
+            </div>
+            <div class="skill-card">
+                <h3>Engineering</h3>
+                <p>SDLC, Requirement Analysis </p>
+            </div>
+            <div class="skill-card">
+                <h3>Certifications</h3>
+                <p>Diploma in Computer Application </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--gray);">
+        <h2 class="section-title">Featured Project</h2>
+        <div class="project-glass">
+            <span class="project-tag">Case Study</span>
+            <h3 style="font-size: 2rem; margin: 15px 0;">Mentcare System</h3>
+            <p style="font-weight: 600; color: #666;">Mental Health Care Patient Management System </p>
+            <p style="margin: 20px 0;">Developed an information system to manage patient records, monitor treatments, and generate reports.</p>
+            <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <ul style="list-style: none;">
+                    <li>✔ Secure medical histories </li>
+                    <li>✔ Mental health legislation compliance </li>
+                    <li>✔ Role-based data access </li>
+                </ul>
+                <ul style="list-style: none;">
+                    <li>✔ Suicide risk alert generation </li>
+                    <li>✔ Offline operation capability </li>
+                    <li>✔ Stakeholder analysis </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div>
+                <div class="info-item">
+                    <h4>Location</h4>
+                    <p>Raiganj, West Bengal - 733134 </p>
+                </div>
+                <div class="info-item">
+                    <h4>Email</h4>
+                    <p>paulabhijit1807@gmail.com </p>
+                </div>
+                <div class="info-item">
+                    <h4>Phone</h4>
+                    <p>+91 9883946969 </p>
+                </div>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <form>
+                    <input type="text" placeholder="Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                    <input type="email" placeholder="Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                    <textarea placeholder="Message" rows="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; border: none;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Abhijit Paul</strong></p>
+        <p>Analytical thinking • Quick learner • Team-oriented </p>
+        <div style="margin-top: 20px;">
+            <a href="https://www.linkedin.com/in/abhijit-paul-b874642a3/" style="color: white; margin: 0 10px;">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
